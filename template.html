@@ -42,6 +42,8 @@ body{
   box-shadow:0 2px 6px rgba(160,50,20,.25);
 }
 .pdfbtn:hover{background:#b03024}
+.pdfbtn.ghost{background:#8c6239}
+.pdfbtn.ghost:hover{background:#6e4a28}
 .banner{
   background:var(--banner-bg);
   border-left:3px solid var(--banner-edge);border-right:3px solid var(--banner-edge);
@@ -107,9 +109,11 @@ main p{
 .review .swhy{color:#8c6239;font-size:10.5px;font-family:"SimSun",serif;margin-left:4px;font-style:normal}
 .sep{color:#b09a78;margin:0 3px}
 .pn{color:var(--ans);font-weight:700;font-family:"SimSun",serif;margin-right:2px}
-.plot{margin:12px 0 2px;border-top:1px dashed var(--rule);padding-top:8px}
-.plot h3{margin:0 0 2px;font-size:13px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
+.plot{margin:12px 0 2px;border-top:1px dashed var(--rule);padding-top:8px}.plot h3{margin:0 0 2px;font-size:13px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
 .plot svg{display:block;width:100%;height:auto}
+.translation{margin:12px 0 2px;border-top:1px dashed var(--rule);padding-top:8px}
+.translation h3{margin:0 0 4px;font-size:13px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
+.translation p{margin:0 0 4px;font:12.5px/1.7 "SimSun",serif;color:#5a3a1e;text-align:justify;text-indent:2em}
 .plot .plotnote{margin:2px 0 0;font-size:11.5px;line-height:1.5;color:#8c6239;font-family:"SimSun",serif}
 .vocab{margin-top:8px;padding-top:6px;border-top:1px dashed var(--rule)}
 .vocab h3{margin:0 0 4px;font-size:12.5px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
@@ -138,7 +142,7 @@ main p{
 </style>
 </head>
 <body>
-<div class="tip"><button class="pdfbtn" onclick="window.print()">导出 PDF（A4 讲义）</button></div>
+<div class="tip"><button class="pdfbtn ghost" id="transbtn" style="display:none">全文翻译</button> <button class="pdfbtn" onclick="window.print()">导出 PDF（A4 讲义）</button></div>
 <div id="warn"></div>
 <div class="page">
   <div class="banner" id="banner"></div>
@@ -147,6 +151,7 @@ main p{
     <aside id="sections"></aside>
     <main id="passage"></main>
   </div>
+  <div class="translation" id="translation" style="display:none"></div>
   <div class="plot" id="plot"></div>
   <table class="sheet-table" id="opttable"></table>
   <div class="review" id="review"></div>
@@ -214,6 +219,22 @@ main p{
       }
     }).join('') + '</p>';
   }).join(''));
+
+  // 区带 D1 · 全文翻译（按钮切换，默认隐藏）
+  var tr = d.translation || [];
+  if (tr.length){
+    put('translation', '<h3>全文翻译</h3>' + tr.map(function(t, i){
+      return '<p><span class="pn">' + (PNOS[i] || '') + '</span>' + esc(t) + '</p>';
+    }).join(''));
+    var tbtn = document.getElementById('transbtn');
+    tbtn.style.display = 'inline-block';
+    tbtn.addEventListener('click', function(){
+      var el = document.getElementById('translation');
+      var show = el.style.display === 'none';
+      el.style.display = show ? 'block' : 'none';
+      tbtn.textContent = show ? '隐藏翻译' : '全文翻译';
+    });
+  }
 
   // 区带 D2 · 故事山 · 情感线 · 故事线
   var plot = d.plot || {};
@@ -296,6 +317,8 @@ main p{
   if ((d.sections || []).length !== 5) msgs.push('左栏意义段不是 5 段');
   if ((d.plot || {}).stages && d.plot.stages.length && d.plot.stages.length !== (d.passage || []).length)
     msgs.push('故事山阶段数与正文段数不一致');
+  if ((d.translation || []).length && d.translation.length !== (d.passage || []).length)
+    msgs.push('全文翻译段数与正文段数不一致');
   if (msgs.length){
     warn.style.display = 'block';
     warn.innerHTML = '<b>数据自检提示</b><br>' + msgs.map(esc).join('<br>');
