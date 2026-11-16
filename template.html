@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>完形填空 · 一页式全景批注讲义</title>
+<style>
+:root{
+  --frame-1:#f0dfc2; --frame-2:#fbf5e8;
+  --banner-bg:#f7ebd7; --banner-edge:#e0995c;
+  --ink:#33231a; --ans:#d0492b; --gloss:#8c6239; --punch:#b03024;
+  --mark:#f8dc94; --tick:#2f7d3a; --th:#f3ddc0; --rule:#e2d3b6;
+  --body-fs:15.5px; --body-lh:2.5; --side-fs:12px; --small-fs:11.5px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:linear-gradient(135deg,var(--frame-1),var(--frame-2));
+  padding:22px 12px 40px;
+  font-family:"SimSun","Songti SC","Noto Serif CJK SC",serif;
+  color:var(--ink);
+}
+.page{
+  max-width:1080px;margin:0 auto;background:#fbf6ea;border-radius:12px;
+  box-shadow:0 0 0 8px rgba(255,252,245,.9),0 10px 30px rgba(140,90,40,.18);
+  padding:26px 34px 22px;position:relative;overflow:hidden;
+}
+.page::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:8px;
+  background:linear-gradient(90deg,#b03024,#e2703a,#e9a13b);
+}
+.page::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:8px;
+  background:linear-gradient(90deg,#e9a13b,#e2703a,#b03024);
+}
+.tip{
+  max-width:1080px;margin:0 auto 10px;text-align:right;
+}
+.pdfbtn{
+  font:13px/1 "Microsoft YaHei",sans-serif;color:#fff;background:#d0492b;
+  border:none;border-radius:6px;padding:9px 16px;cursor:pointer;
+  box-shadow:0 2px 6px rgba(160,50,20,.25);
+}
+.pdfbtn:hover{background:#b03024}
+.banner{
+  background:var(--banner-bg);
+  border-left:3px solid var(--banner-edge);border-right:3px solid var(--banner-edge);
+  padding:8px 12px;font-size:12px;line-height:1.55;color:#5a3a1e;margin-bottom:10px;
+}
+.banner .chain{color:#b03024;font-weight:700}
+.head{position:relative;text-align:center;margin:2px 0 16px;min-height:40px}
+.head h1{
+  margin:0;font:700 30px/1.25 "Noto Serif SC","Songti SC","SimSun",serif;
+  letter-spacing:5px;color:#2b1a10;
+}
+.head .pt{
+  position:absolute;right:0;bottom:2px;
+  font:15px/1.2 Georgia,"Times New Roman",serif;color:var(--ans);
+}
+.cols{display:grid;grid-template-columns:38% 1fr}
+aside{border-right:1px solid #e6d7bb;padding-right:14px;font-size:var(--side-fs);line-height:1.55}
+main{padding-left:17px}
+.sect{padding-bottom:7px;margin-bottom:7px;border-bottom:1px dashed var(--rule)}
+.sect:last-child{border-bottom:0;margin-bottom:0}
+.sect h3{margin:0 0 4px;font-size:12.5px;font-weight:700;letter-spacing:.3px;color:#4a2c15}
+.sect .body{white-space:normal}
+.sect .punch{display:block;margin-top:5px;color:var(--punch)}
+main p{
+  margin:0 0 4px;font:var(--body-fs)/var(--body-lh) Georgia,"Times New Roman",serif;
+  text-align:justify;color:var(--ink);text-indent:2em;
+}
+.b{
+  position:relative;display:inline-block;min-width:84px;height:1em;
+  border-bottom:1.2px solid #3a2a1e;vertical-align:baseline;
+}
+.b .a{
+  position:absolute;left:0;bottom:calc(100% + 2px);
+  font:10px/1.1 Georgia,"Times New Roman",serif;color:var(--ans);white-space:nowrap;
+}
+.b .z{
+  position:absolute;left:0;top:calc(100% + 2px);
+  font:10px/1.1 "SimSun",serif;color:var(--gloss);white-space:nowrap;
+}
+.hl{background:var(--mark);padding:0 1px}
+.note{color:var(--punch);font-size:10.5px;font-family:"SimSun",serif}
+.sheet-table{width:calc(100% - 26px);border-collapse:collapse;font-size:var(--small-fs);line-height:1.5;margin:2px 0 0 26px}
+.sheet-table caption{
+  caption-side:top;text-align:left;font-weight:700;font-size:13.5px;
+  padding:8px 0 6px;color:#2b1a10;
+}
+.sheet-table th{background:var(--th);font-weight:700;text-align:left;padding:5px 8px;border-bottom:1px solid #ddc49e}
+.sheet-table td{padding:4px 8px;border-bottom:1px solid #f0e6d2;vertical-align:middle}
+.sheet-table th:first-child,.sheet-table td:first-child{width:5%;text-align:center;color:#444}
+.sheet-table th:not(:first-child),.sheet-table td:not(:first-child){width:23.75%}
+.opt-en{font-family:Georgia,"Times New Roman",serif}
+.opt-zh{color:#6b5a48;font-size:.9em;margin-left:3px;font-family:"SimSun",serif}
+.tick,.win .opt-en{color:var(--tick);font-weight:700}
+.tick{font-family:"Segoe Print","Bradley Hand",cursive;margin-right:3px}
+.win .opt-zh{color:var(--tick)}
+.review{margin-top:10px;font-size:var(--small-fs);line-height:1.55}
+.review p{margin:0 0 2px;text-align:justify}
+.review .lab{font-weight:700;color:#b03024}
+.recall .rn{color:var(--ans);font-weight:700}
+.review .sen{display:block;margin:2px 0 0;text-align:justify}
+.review .sno{color:var(--ans);font-weight:700;margin-right:2px}
+.review .sen-en{font-family:Georgia,"Times New Roman",serif;font-style:italic;color:#33231a}
+.review .swhy{color:#8c6239;font-size:10.5px;font-family:"SimSun",serif;margin-left:4px;font-style:normal}
+.sep{color:#b09a78;margin:0 3px}
+.pn{color:var(--ans);font-weight:700;font-family:"SimSun",serif;margin-right:2px}
+.plot{margin:12px 0 2px;border-top:1px dashed var(--rule);padding-top:8px}
+.plot h3{margin:0 0 2px;font-size:13px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
+.plot svg{display:block;width:100%;height:auto}
+.plot .plotnote{margin:2px 0 0;font-size:11.5px;line-height:1.5;color:#8c6239;font-family:"SimSun",serif}
+.vocab{margin-top:8px;padding-top:6px;border-top:1px dashed var(--rule)}
+.vocab h3{margin:0 0 4px;font-size:12.5px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
+.vocab ul{margin:0;padding:0;list-style:none}
+.vocab li{padding:2px 0;border-bottom:1px dotted #e6d7bb;font-size:11.5px;line-height:1.45}
+.vocab li:last-child{border-bottom:0}
+.vocab .en{font-family:Georgia,"Times New Roman",serif;font-weight:700;color:#33231a}
+.vocab .zh{color:#8c6239;margin-left:4px;font-family:"SimSun",serif}
+#warn{
+  display:none;max-width:1080px;margin:0 auto 10px;padding:7px 12px;
+  background:#fff4e5;border:1px solid #e8b96a;color:#8a5a12;
+  font:12px/1.5 "Microsoft YaHei",sans-serif;border-radius:6px;
+}
+@page{size:A4 portrait;margin:0}
+@media print{
+  body{background:#fbf6ea;padding:0}
+  .tip,#warn{display:none!important}
+  /* 版式按 1080px 宽设计；打印时整体缩到 A4 一页，不靠"适应页面"手工缩放 */
+  .page{
+    width:1080px;max-width:none;box-shadow:none;border-radius:0;
+    padding:26px 34px 22px;zoom:0.64;
+  }
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  tr,.b,.sect,.review p,.sheet-table caption{break-inside:avoid;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="tip"><button class="pdfbtn" onclick="window.print()">导出 PDF（A4 讲义）</button></div>
+<div id="warn"></div>
+<div class="page">
+  <div class="banner" id="banner"></div>
+  <div class="head"><h1 id="title"></h1><div class="pt" id="ptitle"></div></div>
+  <div class="cols">
+    <aside id="sections"></aside>
+    <main id="passage"></main>
+  </div>
+  <div class="plot" id="plot"></div>
+  <table class="sheet-table" id="opttable"></table>
+  <div class="review" id="review"></div>
+</div>
+
+<script id="sheet-data" type="application/json">{"title":"完形填空","passage_title":"From Cyclist to Skier","range":[1,15],"banner":{"genre":"新闻报道·跨界追梦","synopsis":"新疆温泉县选手吐尔松江·布尔力克从长跑少年长成业余车手，赛里木湖之行点燃骑行热情，又凭耐力被国家越野滑雪队选中跨界冲击 2022 冬奥；虽未进入最终名单，他仍以技术人员身份服务赛事，并把目光投向 2026。","chain":["天赋","热爱","突破","转型","坚守"],"focus":"命题集中在动词与短语搭配、名词词义辨析、逻辑关系副词，以及首尾“不放弃”的态度呼应。"},"sections":[{"id":"P1","name":"天赋初显","body":"开篇一句 has gone from ... to ... 定下“业余车手→专业滑雪运动员”的身份跨度，1 的 athletic ___ began to show 只能是天赋；2 由 third in the ... Marathon 锁定 finished third（竞赛名次）；3 与 4 同向复现——passion grew 才谈得上 raised his interest，promoted 是及物动词，不能让 passion 自己作主语。","punch":"天赋先露头，热爱才跟上"},{"id":"P2","name":"第一辆车","body":"父亲 5 送的是礼物：gift sb sth 双宾语，awarded 要接奖项、lent / borrowed 方向都反了。6 靠 despite + due to losing balance 判定——摔了就不算一场 successful 的比赛，demanding / tough 说的是难度不是结果。","punch":"车是礼物，摔是学费"},{"id":"P3","name":"越挫越勇","body":"But 一转，7 的 kept testing his ___ 是 test one's limits 的固定框架，不是 fitness / confidence；8 后接 a striking victory，能与 victory 搭配的只有 achieved。两句把“试极限 → 拿奖牌 → 高原赛夺冠”串成上升线。","punch":"把极限试穿了，奖牌才来"},{"id":"P4","name":"跨界转身","body":"全篇最密的一段：9 要承接“自行车→滑雪”的意外，只有 Surprisingly；10 由 new talents 定 looking for；11 是从业余到国家队的分水岭，故 significant；12 被 yet 一翻，后文 strict training 说明是 challenges 而非 rewards；13 的 to ___ the team 只能 keep up with。","punch":"被看见的是耐力，扛住的是训练"},{"id":"P5","name":"落选不落志","body":"没进名单却不离场：14 由 as a technician 反推 serve as；15 由 As long as I don't give up 同义复现定 continue。结尾回扣开头的身份跨度——变了项目，没变那句“还有机会”。","punch":"名单没进，梦想没停"}],"passage":[[{"t":"text","v":"Torsongan Bullik, a 28-year-old athlete, has gone from being an amateur (业余的) cyclist to a professional cross-country skier. In Wenquan county he spent his childhood, when his "},{"t":"hl","v":"athletic"},{"t":"text","v":" "},{"t":"b","no":1,"a":"talent","zh":"天赋"},{"t":"text","v":" "},{"t":"hl","v":"began to show"},{"t":"text","v":". In 2009, as a freshman in junior high, he was good at long-distance running and by 2016, he had "},{"t":"b","no":2,"a":"finished","zh":"拿到第三名"},{"t":"text","v":" "},{"t":"hl","v":"third"},{"t":"text","v":" in the Xinjiang Wusu International Marathon. "},{"t":"hl","v":"His passion for cycling"},{"t":"text","v":" "},{"t":"b","no":3,"a":"grew","zh":"与日俱增"},{"t":"text","v":" during the Tour of Sayram Lake, which "},{"t":"hl","v":"raised his"},{"t":"text","v":" "},{"t":"b","no":4,"a":"interest","zh":"兴趣"},{"t":"text","v":" in the sport."}],[{"t":"text","v":"In 2012, his father "},{"t":"b","no":5,"a":"gifted","zh":"赠送"},{"t":"text","v":" him a mountain bike "},{"t":"hl","v":"worth 5,000 yuan"},{"t":"text","v":". Torsongan used it frequently and participated in his first competition two years later, "},{"t":"hl","v":"despite"},{"t":"text","v":" not having a "},{"t":"b","no":6,"a":"successful","zh":"成功的"},{"t":"text","v":" race "},{"t":"hl","v":"due to losing balance"},{"t":"text","v":" on a steep slope"},{"t":"note","v":"摔了，这场就不算成功"},{"t":"text","v":"."}],[{"t":"text","v":"But he was determined and "},{"t":"hl","v":"kept testing his"},{"t":"text","v":" "},{"t":"b","no":7,"a":"limits","zh":"极限"},{"t":"text","v":", which eventually resulted in winning medals in cycling competitions across all levels in China. On October 18, 2018, he "},{"t":"b","no":8,"a":"achieved","zh":"取得"},{"t":"text","v":" "},{"t":"hl","v":"a striking victory"},{"t":"text","v":" by being the first to finish a high-altitude bike race in the Xizang autonomous region"},{"t":"note","v":"第一个完赛＝拿下胜利"},{"t":"text","v":"."}],[{"t":"b","no":9,"a":"Surprisingly","zh":"令人意外的是"},{"t":"text","v":", "},{"t":"hl","v":"his endurance (耐力) caught the attention"},{"t":"note","v":"自行车→滑雪，意外才合逻辑"},{"t":"text","v":" of the national cross-country skiing team, who were "},{"t":"b","no":10,"a":"looking for","zh":"寻找"},{"t":"text","v":" "},{"t":"hl","v":"new talents"},{"t":"text","v":" for the 2022 Beijing Winter Olympics. "},{"t":"hl","v":"Joining the team"},{"t":"text","v":" was a(n) "},{"t":"b","no":11,"a":"significant","zh":"意义重大的"},{"t":"text","v":" moment for Torsongan, "},{"t":"hl","v":"yet"},{"t":"text","v":" it came with its own "},{"t":"b","no":12,"a":"challenges","zh":"挑战"},{"t":"text","v":". He had to "},{"t":"hl","v":"go through strict training"},{"t":"text","v":" during the day and improve his upper-body strength in the gym at night to "},{"t":"b","no":13,"a":"keep up with","zh":"跟上"},{"t":"text","v":" the team."}],[{"t":"text","v":"Although he didn't make the final list for the Winter Olympics, he "},{"t":"b","no":14,"a":"served","zh":"担任"},{"t":"text","v":" "},{"t":"hl","v":"as a technician"},{"t":"text","v":" helping with the operations of the event. Now, Torsongan remains enthusiastic about future competitions. \"I will "},{"t":"b","no":15,"a":"continue","zh":"继续"},{"t":"text","v":" with my efforts. "},{"t":"hl","v":"As long as I don't give up"},{"t":"text","v":", I still have a chance to compete at the 2026 Winter Olympics,\" he says"}]],"options":[{"no":1,"A":["spirit","精神"],"B":["talent","天赋"],"C":["strength","力量"],"D":["figure","体型"],"key":"B"},{"no":2,"A":["elected","选举"],"B":["scored","得分"],"C":["finished","名次完赛"],"D":["missed","错过"],"key":"C"},{"no":3,"A":["reduced","减少"],"B":["grew","增长"],"C":["disappeared","消失"],"D":["promoted","提升"],"key":"B"},{"no":4,"A":["interest","兴趣"],"B":["curiosity","好奇心"],"C":["emotion","情感"],"D":["awareness","意识"],"key":"A"},{"no":5,"A":["awarded","授予"],"B":["lent","借给"],"C":["borrowed","借来"],"D":["gifted","赠送"],"key":"D"},{"no":6,"A":["successful","成功的"],"B":["demanding","要求高的"],"C":["tough","困难的"],"D":["meaningful","有意义的"],"key":"A"},{"no":7,"A":["fitness","健康"],"B":["pains","疼痛"],"C":["limits","极限"],"D":["confidence","自信"],"key":"C"},{"no":8,"A":["celebrated","庆祝"],"B":["achieved","取得"],"C":["expected","期望"],"D":["announced","宣布"],"key":"B"},{"no":9,"A":["Frankly","坦率地"],"B":["Obviously","明显地"],"C":["Generally","通常"],"D":["Surprisingly","令人惊讶地"],"key":"D"},{"no":10,"A":["looking for","寻找"],"B":["picking up","捡起"],"C":["watching over","监视"],"D":["trying out","尝试"],"key":"A"},{"no":11,"A":["familiar","熟悉的"],"B":["typical","典型的"],"C":["alarming","令人担忧的"],"D":["significant","重要的"],"key":"D"},{"no":12,"A":["rewards","奖励"],"B":["problems","问题"],"C":["challenges","挑战"],"D":["risks","风险"],"key":"C"},{"no":13,"A":["keep up with","跟上"],"B":["come up with","提出"],"C":["put up with","忍受"],"D":["make up with","与……和解"],"key":"A"},{"no":14,"A":["pretended","假装"],"B":["served","担任"],"C":["applied","申请"],"D":["competed","竞争"],"key":"B"},{"no":15,"A":["survive","生存"],"B":["share","分享"],"C":["continue","继续"],"D":["recover","恢复"],"key":"C"}],"review":{"summary":"“天赋—试炼—转型—坚守”的体育人物报道结构。15 空分布：动词 6（2 finished / 3 grew / 5 gifted / 8 achieved / 14 served / 15 continue）、短语动词 2（10 looking for / 13 keep up with）、名词 4（1 talent / 4 interest / 7 limits / 12 challenges）、形容词 2（6 successful / 11 significant）、逻辑副词 1（9 Surprisingly）。","pitfalls":"2 与 3 都是动词辨义：finished third 表“以第三名完赛”，score 后接分数不接名次；passion grew 与下句 raised his interest 同向复现，promoted 是及物动词、不能让 passion 自己作主语。9 与 12 都靠逻辑词兜底：自行车→滑雪是意外，只有 Surprisingly 承接得住；yet 把 significant moment 翻成 challenges，后文 strict training 就是证据，选 Obviously / rewards 会把转折抹平。14 与 15 靠固定搭配和同义复现：serve as a technician、continue 由 As long as I don't give up 反推，不可选 applied / recover。","method":"①先通读，标出身份与事业转折点（amateur cyclist → professional skier → national skiing team → technician → 2026 目标）；②再按“搭配优先、复现其次、逻辑兜底”定夺（test one's limits / serve as / keep up with / finished third）；③最后回读首尾——开头 has gone from ... to ... 与结尾 As long as I don't give up, I still have a chance 是“跨界不放弃”的闭环，15 若选 survive / recover，闭环即断。","recall":[{"no":1,"v":"athlete 定“天赋”"},{"no":2,"v":"finished third＝名次完赛"},{"no":3,"v":"passion grew 与下句同向"},{"no":4,"v":"raised his interest 搭配"},{"no":5,"v":"gift sb sth（父亲赠车）"},{"no":6,"v":"despite + 失平衡→非成功"},{"no":7,"v":"test one's limits 固定搭配"},{"no":8,"v":"achieved a victory 搭配"},{"no":9,"v":"跨界意外→Surprisingly"},{"no":10,"v":"looking for new talents"},{"no":11,"v":"业余→国家队＝significant"},{"no":12,"v":"yet 一转，后文 strict training"},{"no":13,"v":"keep up with the team"},{"no":14,"v":"serve as 固定搭配"},{"no":15,"v":"don't give up 同义复现"}]}}</script>
+<script>
+(function(){
+  var warn = document.getElementById('warn');
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function put(id, html){ document.getElementById(id).innerHTML = html; }
+
+  var raw = document.getElementById('sheet-data').textContent.trim();
+  var d;
+  try { d = JSON.parse(raw); }
+  catch(e){
+    warn.style.display = 'block';
+    warn.textContent = '尚未注入数据。请先运行：python scripts/build_sheet.py INPUT.json OUTPUT.html';
+    return;
+  }
+
+  // 区带 A · 顶部横幅
+  var b = d.banner || {};
+  var chain = (b.chain || []).join(' → ');
+  put('banner',
+    '【' + esc(b.genre) + '】' + esc(b.synopsis) +
+    ' <span class="chain">主线＝' + esc(chain) + '</span>；' + esc(b.focus));
+
+  // 区带 B · 标题
+  put('title', esc(d.title || '完形填空'));
+  put('ptitle', esc(d.passage_title || ''));
+
+  // 区带 C · 左栏 P1–P5
+  put('sections', (d.sections || []).map(function(s){
+    return '<div class="sect"><h3>' + esc(s.id) + ' ' + esc(s.name) + '</h3>' +
+           '<div class="body">' + esc(s.body).replace(/\n/g,'<br>') + '</div>' +
+           '<span class="punch">' + esc(s.punch) + '</span></div>';
+  }).join(''));
+
+  // 区带 C2 · 左栏高价值词汇
+  if ((d.vocab || []).length){
+    document.getElementById('sections').insertAdjacentHTML('beforeend',
+      '<div class="vocab"><h3>高价值词汇</h3><ul>' +
+      d.vocab.map(function(w){
+        return '<li><span class="en">' + esc(w.en) + '</span><span class="zh">' + esc(w.zh) + '</span></li>';
+      }).join('') + '</ul></div>');
+  }
+
+  // 区带 D · 正文三层批注（每段前加①②③段标）
+  var PNOS = ['①','②','③','④','⑤','⑥','⑦','⑧'];
+  put('passage', (d.passage || []).map(function(para, pi){
+    return '<p><span class="pn">' + (PNOS[pi] || '') + '</span>' + para.map(function(f){
+      switch(f.t){
+        case 'b':
+          return '<span class="b"><span class="a">' + esc(f.no) + ' ' + esc(f.a) + '</span>' +
+                 '<span class="z">' + esc(f.zh) + '</span></span>';
+        case 'hl':   return '<span class="hl">' + esc(f.v) + '</span>';
+        case 'note': return '<span class="note">（' + esc(f.v) + '）</span>';
+        case 'br':   return '<br>';
+        default:     return esc(f.v);
+      }
+    }).join('') + '</p>';
+  }).join(''));
+
+  // 区带 D2 · 故事山 · 情感线 · 故事线
+  var plot = d.plot || {};
+  var st = plot.stages || [];
+  if (st.length){
+    var n = st.length, W = 1010, H = 212, x0 = 80, x1 = W - 80;
+    var sy = [150, 128, 95, 60, 100].slice(0, n);   // 故事山：起→承→转→高潮→收束
+    var ey = [70, 118, 92, 52, 60].slice(0, n);     // 情感线：低开高走
+    var X = [], gi;
+    for (gi = 0; gi < n; gi++) X.push(x0 + gi * (x1 - x0) / (n - 1));
+    var s = '<polyline points="' + X.map(function(x, j){ return x + ',' + sy[j]; }).join(' ') +
+            '" fill="none" stroke="#d0492b" stroke-width="2"/>' +
+            '<polyline points="' + X.map(function(x, j){ return x + ',' + ey[j]; }).join(' ') +
+            '" fill="none" stroke="#c77d1e" stroke-width="1.5" stroke-dasharray="5 4"/>';
+    for (gi = 0; gi < n; gi++){
+      s += '<circle cx="' + X[gi] + '" cy="' + sy[gi] + '" r="4" fill="#d0492b"/>' +
+           '<circle cx="' + X[gi] + '" cy="' + ey[gi] + '" r="3.5" fill="#c77d1e"/>' +
+           '<text x="' + X[gi] + '" y="' + (sy[gi] + 16) + '" text-anchor="middle" font-size="11" fill="#5a3a1e">' + esc(st[gi].story) + '</text>' +
+           '<text x="' + X[gi] + '" y="' + (ey[gi] - 8) + '" text-anchor="middle" font-size="11" fill="#a06a14">' + esc(st[gi].emotion) + '</text>' +
+           '<text x="' + X[gi] + '" y="' + (H - 8) + '" text-anchor="middle" font-size="12" font-weight="700" fill="#b03024">' + esc(st[gi].no + ' ' + st[gi].stage) + '</text>';
+    }
+    s += '<text x="16" y="18" font-size="11" fill="#d0492b">—— 故事线（情节山）</text>' +
+         '<text x="150" y="18" font-size="11" fill="#c77d1e">┄ 情感线</text>';
+    put('plot', '<h3>故事山 · 情感线 · 故事线</h3>' +
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" role="img">' + s + '</svg>' +
+      (plot.line_emotion ? '<p class="plotnote">' + esc(plot.line_emotion) + '</p>' : ''));
+  }
+
+  // 区带 E · 选项与判断表
+  var opts = d.options || [];
+  var range = d.range || [opts.length ? opts[0].no : '', opts.length ? opts[opts.length-1].no : ''];
+  var head = '<caption>选项与判断（' + esc(range[0]) + '–' + esc(range[1]) +
+             '，<span class="tick">✓</span> 为答案）</caption>' +
+             '<thead><tr><th>题</th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>';
+  var rows = opts.map(function(o){
+    var cells = ['A','B','C','D'].map(function(k){
+      var pair = o[k] || ['',''];
+      var win = (o.key === k);
+      return '<td' + (win ? ' class="win"' : '') + '>' +
+             (win ? '<span class="tick">✓</span>' : '') +
+             '<span class="opt-en">' + esc(pair[0]) + '</span>' +
+             '<span class="opt-zh">' + esc(pair[1]) + '</span></td>';
+    }).join('');
+    return '<tr><td>' + esc(o.no) + '</td>' + cells + '</tr>';
+  }).join('');
+  put('opttable', head + '<tbody>' + rows + '</tbody>');
+
+  // 区带 F · 复盘 + 续写佳句（每句配一个仿写）
+  var r = d.review || {};
+  var s2 = d.sentences || {};
+  var good = (s2.good || []).map(function(x, i){
+    return '<span class="sen"><span class="sno">' + (PNOS[i] || '') + '</span><span class="sen-en">' +
+           esc(x.en) + '</span><span class="swhy">' + esc(x.note) + '</span></span>';
+  }).join('');
+  var imits = (s2.good || []).map(function(x, i){
+    return (x.imitate ? '<span class="sen"><span class="sno">' + (PNOS[i] || '') +
+           '</span><span class="sen-en">' + esc(x.imitate.en) +
+           '</span><span class="swhy">' + esc(x.imitate.note) + '</span></span>' : '');
+  }).join('');
+  put('review',
+    '<p><span class="lab">【总评】</span>' + esc(r.summary) + '</p>' +
+    '<p><span class="lab">【方法】</span>' + esc(r.method) + '</p>' +
+    '<p><span class="lab">【易错】</span>' + esc(r.pitfalls) + '</p>' +
+    (good ? '<p><span class="lab">【续写佳句】</span>' + good + '</p>' : '') +
+    (imits ? '<p><span class="lab">【仿写·读后续写】</span>' + imits + '</p>' : ''));
+
+  // 一致性自检（仅屏幕提示，不打印）
+  var msgs = [];
+  var nos = opts.map(function(o){ return Number(o.no); });
+  for (var i = 1; i < nos.length; i++){
+    if (nos[i] !== nos[i-1] + 1) msgs.push('题号不连续：' + nos[i-1] + ' → ' + nos[i]);
+  }
+  var blanks = 0;
+  (d.passage || []).forEach(function(p){ p.forEach(function(f){ if(f.t === 'b') blanks++; }); });
+  if (blanks !== opts.length) msgs.push('正文空数 ' + blanks + ' 与选项表行数 ' + opts.length + ' 不一致');
+  opts.forEach(function(o){
+    if (!o.key) msgs.push('第 ' + o.no + ' 题缺答案（待核）');
+    else if (['A','B','C','D'].indexOf(o.key) < 0) msgs.push('第 ' + o.no + ' 题答案标记非法');
+  });
+  if ((d.sections || []).length !== 5) msgs.push('左栏意义段不是 5 段');
+  if ((d.plot || {}).stages && d.plot.stages.length && d.plot.stages.length !== (d.passage || []).length)
+    msgs.push('故事山阶段数与正文段数不一致');
+  if (msgs.length){
+    warn.style.display = 'block';
+    warn.innerHTML = '<b>数据自检提示</b><br>' + msgs.map(esc).join('<br>');
+  }
+})();
+</script>
+</body>
+</html>
