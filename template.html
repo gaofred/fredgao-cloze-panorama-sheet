@@ -10,7 +10,7 @@
   --banner-bg:#f7ebd7; --banner-edge:#e0995c;
   --ink:#33231a; --ans:#d0492b; --gloss:#8c6239; --punch:#b03024;
   --mark:#f8dc94; --tick:#2f7d3a; --th:#f3ddc0; --rule:#e2d3b6;
-  --body-fs:15.5px; --body-lh:2.5; --side-fs:12px; --small-fs:11.5px;
+  --fscale:1; --body-fs:calc(15.5px*var(--fscale)); --body-lh:2.5; --side-fs:calc(12px*var(--fscale)); --small-fs:calc(11.5px*var(--fscale));
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -44,27 +44,28 @@ body{
 .pdfbtn:hover{background:#b03024}
 .pdfbtn.ghost{background:#8c6239}
 .pdfbtn.ghost:hover{background:#6e4a28}
+.fsbtn{padding:9px 12px;font-weight:700;letter-spacing:1px}
 .banner{
   background:var(--banner-bg);
   border-left:3px solid var(--banner-edge);border-right:3px solid var(--banner-edge);
-  padding:8px 12px;font-size:12px;line-height:1.55;color:#5a3a1e;margin-bottom:10px;
+  padding:8px 12px;font-size:calc(12px*var(--fscale));line-height:1.55;color:#5a3a1e;margin-bottom:10px;
 }
 .banner .chain{color:#b03024;font-weight:700}
 .head{position:relative;text-align:center;margin:2px 0 16px;min-height:40px}
 .head h1{
-  margin:0;font:700 30px/1.25 "Noto Serif SC","Songti SC","SimSun",serif;
+  margin:0;font:700 calc(30px*var(--fscale))/1.25 "Noto Serif SC","Songti SC","SimSun",serif;
   letter-spacing:5px;color:#2b1a10;
 }
 .head .pt{
   position:absolute;right:0;bottom:2px;
-  font:15px/1.2 Georgia,"Times New Roman",serif;color:var(--ans);
+  font:calc(15px*var(--fscale))/1.2 Georgia,"Times New Roman",serif;color:var(--ans);
 }
 .cols{display:grid;grid-template-columns:38% 1fr}
 aside{border-right:1px solid #e6d7bb;padding-right:14px;font-size:var(--side-fs);line-height:1.55}
 main{padding-left:17px}
 .sect{padding-bottom:7px;margin-bottom:7px;border-bottom:1px dashed var(--rule)}
 .sect:last-child{border-bottom:0;margin-bottom:0}
-.sect h3{margin:0 0 4px;font-size:12.5px;font-weight:700;letter-spacing:.3px;color:#4a2c15}
+.sect h3{margin:0 0 4px;font-size:calc(12.5px*var(--fscale));font-weight:700;letter-spacing:.3px;color:#4a2c15}
 .sect .body{white-space:normal}
 .sect .punch{display:block;margin-top:5px;color:var(--punch)}
 main p{
@@ -77,17 +78,17 @@ main p{
 }
 .b .a{
   position:absolute;left:0;bottom:calc(100% + 2px);
-  font:10px/1.1 Georgia,"Times New Roman",serif;color:var(--ans);white-space:nowrap;
+  font:calc(10px*var(--fscale))/1.1 Georgia,"Times New Roman",serif;color:var(--ans);white-space:nowrap;
 }
 .b .z{
   position:absolute;left:0;top:calc(100% + 2px);
-  font:10px/1.1 "SimSun",serif;color:var(--gloss);white-space:nowrap;
+  font:calc(10px*var(--fscale))/1.1 "SimSun",serif;color:var(--gloss);white-space:nowrap;
 }
 .hl{background:var(--mark);padding:0 1px}
-.note{color:var(--punch);font-size:10.5px;font-family:"SimSun",serif}
+.note{color:var(--punch);font-size:calc(10.5px*var(--fscale));font-family:"SimSun",serif}
 .sheet-table{width:calc(100% - 26px);border-collapse:collapse;font-size:var(--small-fs);line-height:1.5;margin:2px 0 0 26px}
 .sheet-table caption{
-  caption-side:top;text-align:left;font-weight:700;font-size:13.5px;
+  caption-side:top;text-align:left;font-weight:700;font-size:calc(13.5px*var(--fscale));
   padding:8px 0 6px;color:#2b1a10;
 }
 .sheet-table th{background:var(--th);font-weight:700;text-align:left;padding:5px 8px;border-bottom:1px solid #ddc49e}
@@ -106,19 +107,19 @@ main p{
 .review .sen{display:block;margin:2px 0 0;text-align:justify}
 .review .sno{color:var(--ans);font-weight:700;margin-right:2px}
 .review .sen-en{font-family:Georgia,"Times New Roman",serif;font-style:italic;color:#33231a}
-.review .swhy{color:#8c6239;font-size:10.5px;font-family:"SimSun",serif;margin-left:4px;font-style:normal}
+.review .swhy{color:#8c6239;font-size:calc(10.5px*var(--fscale));font-family:"SimSun",serif;margin-left:4px;font-style:normal}
 .sep{color:#b09a78;margin:0 3px}
 .pn{color:var(--ans);font-weight:700;font-family:"SimSun",serif;margin-right:2px}
-.plot{margin:12px 0 2px;border-top:1px dashed var(--rule);padding-top:8px}.plot h3{margin:0 0 2px;font-size:13px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
+.plot{margin:12px 0 2px;border-top:1px dashed var(--rule);padding-top:8px}.plot h3{margin:0 0 2px;font-size:calc(13px*var(--fscale));font-weight:700;color:#4a2c15;letter-spacing:.3px}
 .plot svg{display:block;width:100%;height:auto}
 .translation{margin:12px 0 2px;border-top:1px dashed var(--rule);padding-top:8px}
-.translation h3{margin:0 0 4px;font-size:13px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
-.translation p{margin:0 0 4px;font:12.5px/1.7 "SimSun",serif;color:#5a3a1e;text-align:justify;text-indent:2em}
-.plot .plotnote{margin:2px 0 0;font-size:11.5px;line-height:1.5;color:#8c6239;font-family:"SimSun",serif}
+.translation h3{margin:0 0 4px;font-size:calc(13px*var(--fscale));font-weight:700;color:#4a2c15;letter-spacing:.3px}
+.translation p{margin:0 0 4px;font:calc(12.5px*var(--fscale))/1.7 "SimSun",serif;color:#5a3a1e;text-align:justify;text-indent:2em}
+.plot .plotnote{margin:2px 0 0;font-size:calc(11.5px*var(--fscale));line-height:1.5;color:#8c6239;font-family:"SimSun",serif}
 .vocab{margin-top:8px;padding-top:6px;border-top:1px dashed var(--rule)}
-.vocab h3{margin:0 0 4px;font-size:12.5px;font-weight:700;color:#4a2c15;letter-spacing:.3px}
+.vocab h3{margin:0 0 4px;font-size:calc(12.5px*var(--fscale));font-weight:700;color:#4a2c15;letter-spacing:.3px}
 .vocab ul{margin:0;padding:0;list-style:none}
-.vocab li{padding:2px 0;border-bottom:1px dotted #e6d7bb;font-size:11.5px;line-height:1.45}
+.vocab li{padding:2px 0;border-bottom:1px dotted #e6d7bb;font-size:calc(11.5px*var(--fscale));line-height:1.45}
 .vocab li:last-child{border-bottom:0}
 .vocab .en{font-family:Georgia,"Times New Roman",serif;font-weight:700;color:#33231a}
 .vocab .zh{color:#8c6239;margin-left:4px;font-family:"SimSun",serif}
@@ -142,7 +143,7 @@ main p{
 </style>
 </head>
 <body>
-<div class="tip"><button class="pdfbtn ghost" id="transbtn" style="display:none">全文翻译</button> <button class="pdfbtn" onclick="window.print()">导出 PDF（A4 讲义）</button></div>
+<div class="tip"><button class="pdfbtn ghost fsbtn" id="fsdown" title="缩小字号">A－</button> <button class="pdfbtn ghost fsbtn" id="fsup" title="放大字号">A＋</button> <button class="pdfbtn ghost" id="transbtn" style="display:none">全文翻译</button> <button class="pdfbtn ghost" id="wordstu">导出 Word · 学生版</button> <button class="pdfbtn" id="wordtea">导出 Word · 教师版</button></div>
 <div id="warn"></div>
 <div class="page">
   <div class="banner" id="banner"></div>
@@ -300,6 +301,129 @@ main p{
     '<p><span class="lab">【易错】</span>' + esc(r.pitfalls) + '</p>' +
     (good ? '<p><span class="lab">【续写佳句】</span>' + good + '</p>' : '') +
     (imits ? '<p><span class="lab">【仿写·读后续写】</span>' + imits + '</p>' : ''));
+
+  // 区带 G · Word 导出（学生版 / 教师版）
+  function passageHtml(tea){
+    return (d.passage || []).map(function(para, pi){
+      return '<p>' + (PNOS[pi] || '') + para.map(function(f){
+        switch(f.t){
+          case 'b':
+            var u = '<u>&nbsp;&nbsp;&nbsp;' + esc(f.no) + '&nbsp;&nbsp;&nbsp;</u>';
+            return tea ? u + '<span class="ans">（' + esc(f.a) + ' ' + esc(f.zh) + '）</span>' : u;
+          case 'hl':
+            return tea ? '<span class="hl">' + esc(f.v) + '</span>' : esc(f.v);
+          case 'note':
+            return tea ? '<span class="note">（' + esc(f.v) + '）</span>' : '（' + esc(f.v) + '）';
+          case 'br':
+            return '<br>';
+          default:
+            return esc(f.v);
+        }
+      }).join('') + '</p>';
+    }).join('');
+  }
+  function optTableHtml(tea){
+    var rows = (d.options || []).map(function(o){
+      var cells = ['A','B','C','D'].map(function(k){
+        var pair = o[k] || ['',''];
+        var win = tea && o.key === k;
+        return '<td' + (win ? ' style="color:#008000;font-weight:700"' : '') + '>' +
+               (win ? '✓ ' : '') + esc(pair[0]) +
+               (tea ? '<span style="color:#666;font-size:9pt"> ' + esc(pair[1]) + '</span>' : '') + '</td>';
+      }).join('');
+      return '<tr><td style="text-align:center">' + esc(o.no) + '</td>' + cells + '</tr>';
+    }).join('');
+    return '<table><tr><th style="width:6%">题</th>' +
+           '<th style="width:23.5%">A</th><th style="width:23.5%">B</th><th style="width:23.5%">C</th><th style="width:23.5%">D</th></tr>' + rows + '</table>';
+  }
+  function headHtml(){
+    return '<h1>' + esc(d.title || '完形填空') + '</h1>' +
+           '<p style="text-indent:0;text-align:center"><i>' + esc(d.passage_title || '') + '</i></p>';
+  }
+  function studentBody(){
+    return headHtml() + passageHtml(false) + '<h2>选项</h2>' + optTableHtml(false);
+  }
+  function teacherBody(){
+    var b = d.banner || {};
+    var h = headHtml() +
+      '<p style="text-indent:0"><b>【' + esc(b.genre) + '】</b>' + esc(b.synopsis) +
+      ' <span style="color:#c00000"><b>主线＝' + esc((b.chain || []).join('→')) + '</b></span>；' + esc(b.focus) + '</p>';
+    h += passageHtml(true);
+    h += '<h2>意义段解析</h2>';
+    (d.sections || []).forEach(function(s){
+      h += '<p style="text-indent:0"><b>' + esc(s.id) + ' ' + esc(s.name) + '</b>：' + esc(s.body) +
+           '<span style="color:#c00000">　' + esc(s.punch) + '</span></p>';
+    });
+    h += '<h2>故事山 · 情感线</h2>';
+    ((d.plot || {}).stages || []).forEach(function(s){
+      h += '<p style="text-indent:0;margin:0 0 2pt">' + esc(s.no + ' ' + s.stage) + '：' + esc(s.story) + '（情感：' + esc(s.emotion) + '）</p>';
+    });
+    if (d.plot && d.plot.line_emotion) h += '<p style="text-indent:0;margin:0 0 2pt">' + esc(d.plot.line_emotion) + '</p>';
+    h += '<h2>选项与判断</h2>' + optTableHtml(true);
+    if ((d.vocab || []).length){
+      h += '<h2>高价值词汇</h2><p style="text-indent:0">' + d.vocab.map(function(w){
+        return '<b>' + esc(w.en) + '</b> ' + esc(w.zh);
+      }).join('；') + '</p>';
+    }
+    var r = d.review || {};
+    h += '<h2>复盘</h2>' +
+      '<p style="text-indent:0"><b>【总评】</b>' + esc(r.summary) + '</p>' +
+      '<p style="text-indent:0"><b>【方法】</b>' + esc(r.method) + '</p>' +
+      '<p style="text-indent:0"><b>【易错】</b>' + esc(r.pitfalls) + '</p>';
+    ((d.sentences || {}).good || []).forEach(function(x, i){
+      h += '<p style="text-indent:0"><b>佳句' + (PNOS[i] || '') + '</b> <i>' + esc(x.en) + '</i>（' + esc(x.note) + '）</p>';
+      if (x.imitate) h += '<p style="text-indent:0"><b>仿写' + (PNOS[i] || '') + '</b> <i>' + esc(x.imitate.en) + '</i>（' + esc(x.imitate.note) + '）</p>';
+    });
+    if ((d.translation || []).length){
+      h += '<h2>全文翻译</h2>';
+      d.translation.forEach(function(t, i){
+        h += '<p>' + (PNOS[i] || '') + esc(t) + '</p>';
+      });
+    }
+    return h;
+  }
+  function wordFile(body, name){
+    var css = '@page WordSection1{size:595.3pt 841.9pt;margin:56.7pt 62pt}div.WordSection1{page:WordSection1}' +
+      'body{font-family:"Times New Roman",SimSun,serif;font-size:12pt;color:#000}' +
+      'p{line-height:1.5;text-align:justify;text-indent:2em;margin:0 0 6pt}' +
+      'h1{font-size:15pt;text-align:center;margin:0 0 4pt}' +
+      'h2{font-size:12pt;margin:10pt 0 4pt;border-bottom:1px solid #999;padding-bottom:2pt}' +
+      'table{border-collapse:collapse;width:100%;margin:4pt 0 8pt}' +
+      'td,th{border:1px solid #888;padding:3pt 5pt;font-size:10.5pt;text-align:left;vertical-align:middle}' +
+      'th{background:#e8e8e8;font-weight:700;text-align:center}' +
+      '.ans{color:#c00000;font-size:9pt}.note{color:#c00000;font-size:9pt}.hl{background:#fff3a8}';
+    var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word">' +
+      '<head><meta charset="utf-8"><title>' + esc(name) + '</title><style>' + css + '</style></head>' +
+      '<body><div class="WordSection1">' + body + '</div></body></html>';
+    var blob = new Blob(['\ufeff' + html], { type: 'application/msword' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name + '.doc';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 800);
+  }
+  var baseName = (d.title || '完形填空') + '_' + (d.passage_title || '') + '_';
+  document.getElementById('wordstu').addEventListener('click', function(){
+    wordFile(studentBody(), baseName + '学生版');
+  });
+  document.getElementById('wordtea').addEventListener('click', function(){
+    wordFile(teacherBody(), baseName + '教师版');
+  });
+  window.__clozeExport = { studentBody: studentBody, teacherBody: teacherBody };
+
+  // 字号调节：A－ / A＋（0.85–1.35，步进 0.05，localStorage 记忆）
+  var FS_MIN = 0.85, FS_MAX = 1.35, FS_STEP = 0.05, FS_KEY = 'cloze-fscale';
+  var fs = 1;
+  try { fs = parseFloat(localStorage.getItem(FS_KEY)) || 1; } catch(e){}
+  function applyFs(){
+    fs = Math.min(FS_MAX, Math.max(FS_MIN, Math.round(fs / FS_STEP) * FS_STEP));
+    document.documentElement.style.setProperty('--fscale', fs);
+    try { localStorage.setItem(FS_KEY, fs); } catch(e){}
+  }
+  applyFs();
+  document.getElementById('fsdown').addEventListener('click', function(){ fs -= FS_STEP; applyFs(); });
+  document.getElementById('fsup').addEventListener('click', function(){ fs += FS_STEP; applyFs(); });
 
   // 一致性自检（仅屏幕提示，不打印）
   var msgs = [];
